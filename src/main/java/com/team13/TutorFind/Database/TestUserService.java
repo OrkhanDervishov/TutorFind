@@ -13,6 +13,7 @@ public class TestUserService {
     }
 
     public void saveUser(TestUser user){
+        if(user.getName().equals("Superman")) return;
         repo.save(user);
     }
 }

@@ -3,7 +3,7 @@ package com.team13.TutorFind.User;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="Users")
+@Table(name="TestUsers")
 public class TestUser {
 
     @Id

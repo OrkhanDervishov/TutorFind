@@ -1,19 +1,24 @@
 package com.team13.TutorFind.User;
 
+import jakarta.persistence.*;
 
-public abstract class User {
-    Long id;
-    String passwordHashed;
-    String username;
-    String email;
-    String rating;
+@Entity
+@Table(name = "Users")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String passwordHashed;
+    private String username;
+    private String email;
+    private UserRoles role;
 
     // Changable
-    String firstName;
-    String lastName;
-    Integer age;
-    String phoneNumber;
-    String profilePictureUrl;
+    private String firstName;
+    private String lastName;
+    private Integer age;
+    private String phoneNumber;
+    private byte[] profilePicture;
 
     User(){
 
@@ -32,9 +37,7 @@ public abstract class User {
     public String getPasswordHashed() {
         return passwordHashed;
     }
-    public String getRating() {
-        return rating;
-    }
+    public UserRoles getRole() {return role;}
 
     public String getFirstName() {
         return firstName;
@@ -77,10 +80,10 @@ public abstract class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getProfilePictureUrl() {
-        return profilePictureUrl;
+    public byte[] getProfilePicture() {
+        return profilePicture;
     }
-    public void setProfilePictureUrl(String profilePictureUrl) {
-        this.profilePictureUrl = profilePictureUrl;
+    public void setProfilePicture(byte[] profilePicture) {
+        this.profilePicture = profilePicture;
     }
 }
