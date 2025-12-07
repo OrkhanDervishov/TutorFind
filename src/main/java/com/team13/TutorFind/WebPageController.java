@@ -5,10 +5,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-// Source - https://stackoverflow.com/a
-// Posted by m4rtin, modified by community. See post 'Timeline' for change history
-// Retrieved 2025-12-05, License - CC BY-SA 4.0
-
 
 @Controller
 public class WebPageController {

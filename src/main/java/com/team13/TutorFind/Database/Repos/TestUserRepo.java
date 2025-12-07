@@ -1,4 +1,4 @@
-package com.team13.TutorFind.Database;
+package com.team13.TutorFind.Database.Repos;
 
 import com.team13.TutorFind.User.TestUser;
 import org.springframework.data.jpa.repository.JpaRepository;

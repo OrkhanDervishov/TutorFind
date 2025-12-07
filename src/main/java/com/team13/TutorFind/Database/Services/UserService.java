@@ -1,8 +1,7 @@
-package com.team13.TutorFind.Database;
+package com.team13.TutorFind.Database.Services;
 
-import com.team13.TutorFind.User.TestUser;
+import com.team13.TutorFind.Database.Repos.UserRepo;
 import com.team13.TutorFind.User.User;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 @Service

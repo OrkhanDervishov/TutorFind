@@ -37,41 +37,40 @@ public class User {
     public String getPasswordHashed() {
         return passwordHashed;
     }
-    public UserRoles getRole() {return role;}
-
     public String getFirstName() {
         return firstName;
     }
+
     public void setFirstName(String firstName) {
         if(firstName.length() < 2 || firstName.length() > 32){
             return;
         }
         this.firstName = firstName;
     }
-
     public String getLastName() {
         return lastName;
     }
+
     public void setLastName(String lastName) {
         if(lastName.length() < 2 || lastName.length() > 32){
             return;
         }
         this.lastName = lastName;
     }
-
     public Integer getAge() {
         return age;
     }
+
     public void setAge(Integer age) {
         if(age < 18 || age > 100){
             return;
         }
         this.age = age;
     }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
     public void setPhoneNumber(String phoneNumber) {
         // Will be improved
         if(phoneNumber.length() > 10){
@@ -85,5 +84,15 @@ public class User {
     }
     public void setProfilePicture(byte[] profilePicture) {
         this.profilePicture = profilePicture;
+    }
+
+    public UserRoles getRole() {return role;}
+    public void setRole(UserRoles role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }
