@@ -20,23 +20,39 @@ public class User {
     private String phoneNumber;
     private byte[] profilePicture;
 
-    User(){
+    public User(){
 
     }
 
     public String getUsername() {
         return username;
     }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public Long getId() {
         return id;
     }
+
     public String getEmail() {
         return email;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     // This probably will be deleted
     public String getPasswordHashed() {
         return passwordHashed;
     }
+
+    public void setPasswordHashed(String passwordHashed) {
+        this.passwordHashed = passwordHashed;
+    }
+
     public String getFirstName() {
         return firstName;
     }
