@@ -1,0 +1,20 @@
+package com.team13.TutorFind.Database.Services;
+
+import com.team13.TutorFind.Database.Repos.TestUserRepo;
+import com.team13.TutorFind.User.TestUser;
+import org.springframework.stereotype.Service;
+
+@Service
+public class TestUserService {
+
+    private TestUserRepo repo;
+
+    public TestUserService(TestUserRepo repo){
+        this.repo = repo;
+    }
+
+    public void saveUser(TestUser user){
+        if(user.getName().equals("Superman")) return;
+        repo.save(user);
+    }
+}
