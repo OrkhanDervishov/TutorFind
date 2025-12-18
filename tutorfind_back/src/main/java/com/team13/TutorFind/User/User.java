@@ -28,6 +28,8 @@ public class User {
     private String phoneNumber;
     @Column(name = "profile_picture")
     private byte[] profilePicture;
+    @Column(name = "is_active")
+    private Boolean isActive = true;
 
     public User(){
 
@@ -114,6 +116,14 @@ public class User {
     public UserRoles getRole() {return role;}
     public void setRole(UserRoles role) {
         this.role = role;
+    }
+
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
     }
 
     @Override

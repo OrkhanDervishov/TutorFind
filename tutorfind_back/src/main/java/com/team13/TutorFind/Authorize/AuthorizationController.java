@@ -100,6 +100,13 @@ public class AuthorizationController {
                     .status(HttpStatus.UNAUTHORIZED)
                     .body("Invalid credentials");
             }
+
+            // Block deactivated accounts
+            if (user.getIsActive() != null && !user.getIsActive()) {
+                return ResponseEntity
+                    .status(HttpStatus.FORBIDDEN)
+                    .body("Account is deactivated. Please contact support.");
+            }
             
             // Generate JWT token
             String token = jwtUtil.generateToken(

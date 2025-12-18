@@ -126,11 +126,7 @@ public class AdminService {
         // Get all APPROVED reviews for this tutor
         List<Review> approvedReviews = reviewRepo.findByTutorIdAndStatus(tutorId, "APPROVED");
         
-        if (approvedReviews.isEmpty()) {
-            return; // No approved reviews yet
-        }
-        
-        // Calculate average rating
+        // Calculate average rating (0 when there are no approved reviews)
         double avgRating = approvedReviews.stream()
             .mapToInt(Review::getRating)
             .average()
@@ -193,6 +189,10 @@ public class AdminService {
         if (user.getRole() == UserRoles.ADMIN) {
             throw new RuntimeException("Cannot deactivate admin users");
         }
+
+        // Deactivate base user account
+        user.setIsActive(false);
+        userRepo.save(user);
         
         // If tutor, deactivate their profile too
         if (user.getRole() == UserRoles.TUTOR) {
@@ -209,6 +209,10 @@ public class AdminService {
         User user = userRepo.findById(userId)
             .orElseThrow(() -> new RuntimeException("User not found"));
         
+        // Activate base user account
+        user.setIsActive(true);
+        userRepo.save(user);
+
         // If tutor, activate their profile too
         if (user.getRole() == UserRoles.TUTOR) {
             tutorDetailsRepo.findByUserId(userId).ifPresent(tutor -> {

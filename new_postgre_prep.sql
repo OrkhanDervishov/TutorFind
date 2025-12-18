@@ -30,7 +30,7 @@ CREATE TABLE users (
     phone_number VARCHAR(20),
     profile_picture BYTEA,
     role VARCHAR(20) NOT NULL,
-    is_active BOOLEAN DEFAULT TRUE,
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -154,6 +154,9 @@ CREATE TABLE reviews (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE (tutor_id, learner_id)
 );
+ALTER TABLE reviews
+  ADD CONSTRAINT chk_reviews_status
+  CHECK (status IN ('PENDING','APPROVED','REJECTED'));
 
 -- Feedback (Feedback.java)
 CREATE TABLE feedback (

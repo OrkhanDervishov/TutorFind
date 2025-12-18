@@ -45,4 +45,8 @@ public interface ReviewRepo extends JpaRepository<Review, Long> {
     List<Review> findByStatus(String status);
     // Find reviews by tutor and status
     List<Review> findByTutorIdAndStatus(Long tutorId, String status);
+    List<Review> findByTutorIdAndStatusOrderByCreatedAtDesc(Long tutorId, String status);
+    Long countByTutorIdAndStatus(Long tutorId, String status);
+    @Query("SELECT AVG(r.rating) FROM Review r WHERE r.tutorId = :tutorId AND r.status = 'APPROVED'")
+    Double calculateAverageRatingApproved(@Param("tutorId") Long tutorId);
 }

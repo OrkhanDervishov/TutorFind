@@ -88,7 +88,7 @@ public class ReviewService {
      * @return List of reviews with learner names
      */
     public List<ReviewResponse> getReviewsForTutor(Long tutorId) {
-        List<Review> reviews = reviewRepo.findByTutorIdOrderByCreatedAtDesc(tutorId);
+        List<Review> reviews = reviewRepo.findByTutorIdAndStatusOrderByCreatedAtDesc(tutorId, "APPROVED");
         List<ReviewResponse> responses = new ArrayList<>();
         
         for (Review review : reviews) {
@@ -156,9 +156,9 @@ public class ReviewService {
         TutorDetails tutor = tutorDetailsRepo.findById(tutorId)
             .orElseThrow(() -> new RuntimeException("Tutor not found"));
         
-        // Calculate new average rating
-        Double avgRating = reviewRepo.calculateAverageRating(tutorId);
-        Long reviewCount = reviewRepo.countByTutorId(tutorId);
+        // Calculate new average rating from APPROVED reviews only
+        Double avgRating = reviewRepo.calculateAverageRatingApproved(tutorId);
+        Long reviewCount = reviewRepo.countByTutorIdAndStatus(tutorId, "APPROVED");
         
         // Update tutor profile
         tutor.setRatingAvg(avgRating != null ? avgRating.floatValue() : 0.0f);
